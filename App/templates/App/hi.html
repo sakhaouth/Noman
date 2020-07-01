@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		body
+		{
+			text-align: center;
+		}
+		div
+		{
+			background-color: silver;
+			display: inline-table;
+			margin-top: 300px;
+			font-size: 20px;
+			width: 500px;
+		}
+		input
+		{
+			height: 30px;
+			width: 250px;
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#message").hide()
+			$("#checkbox").click(function(){
+				var element = $("#password")
+				if(element.attr("type") == "text")
+					element.attr("type","password")
+				else
+				{
+					element.attr("type","text")
+				}
+			})
+			$("#checkbox1").click(function(){
+				var element = $("#repassword")
+				if(element.attr("type") == "text")
+					element.attr("type","password")
+				else
+				{
+					element.attr("type","text")
+				}
+			})
+		})
+		function check()
+		{
+			 var a = $("#password").val();
+			 var b = $("#repassword").val()
+			 if(a.localeCompare(b) == 0)
+			 {
+			 	return true;
+			 }
+			 else
+			 {
+			 	$("#message").show();
+			 	return false
+			 }
+		}
+		function mHide()
+		{
+			$("#message").hide()
+		}
+		
+	</script>
+	<title>Sign up</title>
+</head>
+<body>
+<div>
+	<form method="POST" action="set" onsubmit="return check()">{% csrf_token %}
+        <!-- <p>{{date}}</p><br> -->
+		<label>Name</label><br>
+		<input type="text" name="name" id="name" placeholder="Type your name.." required><br>
+		<label>Email</label><br>
+		<input type="email" name="email" id = "email" placeholder="Type your email.." required><br>
+		<label>Password</label><br>
+		<input type="password" name="password" id = "password" placeholder="type your password.."  required><br>
+		<label>view</label>
+		<input type="checkbox" name="checkbox" id="checkbox">
+		<br>
+		<label>re type password</label><br>
+		<input type="password" name="repassword" id= "repassword" placeholder="re-type password.." required onfocus="mHide()"><br>
+		<label id="message" style="color:red">*please type as same</label>
+		<label>view</label>
+		<input type="checkbox" name="checkbox" id="checkbox1"><br>
+		<input type="submit" name="submit" id = "submit">
+
+	</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>json</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style type="text/css">
+		#button
+		{
+			height: 100px;
+			width: 1200px;
+			/*margin-top: 800px;*/
+			/*margin-left: 1800px;*/
+			font-size: 30px;
+
+		}
+		p
+		{
+			border: solid;
+			letter-spacing: 3px;
+			height: 100px;
+			text-align: center;
+			vertical-align: bottom;
+			text-indent: 50px;
+			font-size: 20px;
+			background-color: green;
+			color: white;
+
+		}
+		button
+		{
+
+		}
+		div
+		{
+			overflow: scroll;
+			max-height: 800px;
+			min-height: 100px;
+			text-align: center;
+			font-size: 30px;
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" language="javascript">
+		$(document).ready(function(){
+			// $("button").click(function(){
+				$.getJSON("ajx",function(data,status,xhr){
+					alert(data.length)
+					
+					for(x in data)
+					{
+						$("#s").append("<p>"+data[x].name+"</p>")
+						$("#s").append("<button>click</button")
+						$("#s").append("<button>click</button")
+					}
+				// })
+			})
+			// if ($("#s").html().length == 0)
+			// {
+			// 	$("#s").append("<strong>Empty</strong>")
+			// }
+			// else
+			// {
+			// 	$("strong").remove()
+			// }
+		})
+	</script>
+</head>
+<body>
+	<div id = "s"></div>
+	<button id="button"><i class="fa fa-plus"></i>Add new</button>
+</body>
+</html>

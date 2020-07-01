@@ -1,0 +1,38 @@
+div
+{
+	background-color: silver;
+	margin-left: 25%;
+	margin-right: 35%;
+	margin-top: 10%;
+	padding: 10%;
+
+}
+input
+{
+	display: block;
+	padding: 10px 20px;
+	text-align: center;
+}
+input:hover
+{
+	background-color: blue;
+}
+label
+{
+	height: 50px;
+	background-color: red;
+	font-size: 20px;
+}
+#submit
+{
+	border-radius: 10px;
+	margin-left: 80px;
+}
+#rename,#match
+{
+	font-size: 15px;
+	background-color: silver;
+	color: yellow;
+	margin-left: 180px;
+	visibility: hidden;
+}

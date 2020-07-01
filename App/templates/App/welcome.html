@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome</title>
+	<style type="text/css">
+		body
+		{
+			text-align: center;
+		}
+		#div
+		{
+			background-color: silver;
+			font-size: 35px;
+			display: grid;
+			text-align: center;
+		}
+		button
+		{
+			height: 50px;
+			width: 150px;
+		}
+		input
+		{
+			width: 450px;
+			height: 35px;
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" language="jquery">
+		$(document).ready(function(){
+			$("#eventName").hide()
+			$("#ok").hide()
+			x = 0
+			$.getJSON("1st",function(data,status,xhr){
+				// alert(data.length)
+				for(x in data)
+				{
+					// var el = "<div></div>"
+					$("#div").append("<div></div>")
+					$("#div").append("<p>"+data[x]+"</p>")
+					$("#div").append("<button id ="+x+">CL</button>")
+					$("#div").append("<hr>")
+
+
+				}
+				// $("#div > div").attr(style:"border:solid")
+				$("#div > button").click(function(){
+				$.get("remove",{name:$(this).prev().text()},function(data,status){
+					window.location = "signin"
+				})
+			})
+
+
+			})
+				
+			$("#add").click(function(){
+				$("#eventName").show()
+				$("#ok").show()
+			})
+			$("#ok").click(function(){
+				$.get("add",{name:$("#eventName").val()},function(data,status){
+					window.location = "signin"
+				})
+			})
+			$("#logout").click(function(){
+				// alert("cl")
+				$.get("logout",function(data,status){
+					if(data == "ok")
+						window.location = "http://127.0.0.1:8000/"
+				})
+			})
+			
+		})
+	</script>
+	<!-- <script type="text/javascript" language="javascript">
+		function x()
+		{
+			alert("aa")
+			$.getJSON("1st",function(data,status,xhr){
+				for(x in data)
+				{
+					alert(data[x])
+
+				}
+			})	
+		}
+	</script> -->
+</head>
+<body>
+	<div id="div" style=" overflow: scroll; max-height: 800px;">
+		
+	</div>
+	<button id="add">Add</button><br>
+	<input type="text" name="eventName" id = "eventName"><button id="ok">OK</button><br>
+	<button id="logout">Logout</button>
+</body>
+</html>
